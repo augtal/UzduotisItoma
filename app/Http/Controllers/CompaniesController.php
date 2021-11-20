@@ -2,9 +2,104 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyRequest;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
 {
-    //
+    /**
+     * Shows all companies
+     *
+     * @return view company list view
+     */
+    public function index(){
+        $companies = Company::all()->toArray();
+
+        return view('company.show')->with('companies', $companies);
+    }
+
+    /**
+     * Shows create new company page
+     *
+     * @return view create company view
+     */
+    public function showCreateCompanyPage(){
+        return view('company.create');
+    }
+
+    /**
+     * Validates form inputs and saves company to database
+     *
+     * @param CompanyRequest $request
+     * @return view companies list view
+     */
+    public function createCompany(CompanyRequest $request){
+        $request->validated();
+
+        $data = $request->input();
+
+        $this->saveCompany(new Company(), $data);
+
+        return redirect()->route('Companies');
+    }
+
+    /**
+     * Shows update company page based on companies id
+     *
+     * @param int $id companies id in database
+     * @return view update company view
+     */
+    public function showUpdateCompanyPage($id){
+        $companies = Company::where('id', $id)->first();
+
+        return view('company.update')->with('companies', $companies);
+    }
+
+    /**
+     * Validates form inputs and updates company information in database
+     *
+     * @param CompanyRequest $request
+     * @param int $id companies id in database
+     * @return view companies list view
+     */
+    public function updateCompany(CompanyRequest $request, $id){
+        $request->validated();
+
+        $data = $request->input();
+
+        $company = Company::where('id', $id)->first();
+        $this->saveCompany($company, $data);
+
+        return redirect()->route('Companies');
+    }
+
+    /**
+     * Deletes company from database
+     *
+     * @param int $id companies id in database
+     * @return view companies list view
+     */
+    public function deleteCompany($id){
+        Company::destroy($id);
+
+        return redirect()->route('Companies');
+    }
+
+    /**
+     * Function for saving company in database using eloquent
+     *
+     * @param Company $company company class object
+     * @param Array $data new/updated data to be saved in database
+     * @return boolean returns save value
+     */
+    private function saveCompany($company, $data){
+        $company->name = $data['name'];
+        $company->email = $data['email'];
+        $company->url = $data['url'];
+        $company->logo = $data['logo'];
+        $company->save();
+
+        return true;
+    }
 }

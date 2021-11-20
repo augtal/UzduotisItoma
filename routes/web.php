@@ -32,6 +32,7 @@ Route::middleware(['auth', 'user'])->group(function (){
 });
 
 Route::middleware(['auth', 'admin'])->group(function (){
+    // workers
     Route::get('/workers/create', [App\Http\Controllers\WorkersController::class, 'showCreateWorkerPage']);
     Route::post('/workers/create/completed', [App\Http\Controllers\WorkersController::class, 'createWorker']);
     
@@ -40,4 +41,12 @@ Route::middleware(['auth', 'admin'])->group(function (){
 
     Route::get('/workers/delete/{id}', [App\Http\Controllers\WorkersController::class, 'deleteWorker']);
 
+    // companies
+    Route::get('/companies/create', [App\Http\Controllers\CompaniesController::class, 'showCreateCompanyPage']);
+    Route::post('/companies/create/completed', [App\Http\Controllers\CompaniesController::class, 'createCompany']);
+    
+    Route::get('/companies/update/{id}', [App\Http\Controllers\CompaniesController::class, 'showUpdateCompanyPage']);
+    Route::post('/companies/update/{id}/completed', [App\Http\Controllers\CompaniesController::class, 'updateCompany']);
+
+    Route::get('/companies/delete/{id}', [App\Http\Controllers\CompaniesController::class, 'deleteCompany']);
 });
