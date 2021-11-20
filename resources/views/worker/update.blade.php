@@ -8,21 +8,21 @@
         @csrf
         <div>
             <label for="name">Vardas</label>
-            <input type="text" id="name" name="name" value="{{$worker['name']}}">
+            <input type="text" id="name" name="name" value="{{$worker['name']}}" required>
             <br>
             <span style="color: red">@error('name'){{$message}}@enderror</span>
         </div>
         <br>
         <div>
             <label for="email">El. Pastas</label>
-            <input type="email" id="email" name="email" value="{{$worker['email']}}">
+            <input type="email" id="email" name="email" value="{{$worker['email']}}" required>
             <br>
             <span style="color: red">@error('email'){{$message}}@enderror</span>
         </div>
         <br>
         <div>
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" pattern="+3706[0-9]{8}" placeholder="+3706" value="{{$worker['phone']}}">
+            <input type="tel" id="phone" name="phone" pattern="+3706[0-9]{8}" placeholder="+3706" value="{{$worker['phone']}}" required>
             <br>
             <span style="color: red">@error('phone'){{$message}}@enderror</span>
         </div>
