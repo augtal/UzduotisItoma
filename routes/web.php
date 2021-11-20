@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WorkersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,5 +24,13 @@ Route::middleware(['auth', 'user'])->group(function (){
         return view('welcome');
     });
     
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
+    Route::get('/workers', [App\Http\Controllers\WorkersController::class, 'index']);
+
+    Route::get('/workers/create', [App\Http\Controllers\WorkersController::class, 'createWorker']);
+    Route::get('/workers/update/{id}', [App\Http\Controllers\WorkersController::class, 'showUpdateWorkerPage']);
+    Route::get('/workers/delete/{id}', [App\Http\Controllers\WorkersController::class, 'deleteWorker']);
+
+
 });
