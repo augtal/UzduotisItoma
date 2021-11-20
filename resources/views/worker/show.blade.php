@@ -6,7 +6,7 @@
 
     @auth
         @if (auth()->user()->isAdmin())
-            <a href="workers/create" class="btn btn-info">Sukurti nauja</a>
+            <a href="workers/create" class="btn btn-secondary">Sukurti nauja</a>
         @endif
     @endauth
 
@@ -28,8 +28,8 @@
                     <td>{{$worker['company']}}</td>
                     @auth
                         @if (auth()->user()->isAdmin())
-                            <td><a href="workers/update/{{$worker['id']}}" class="btn btn-info">Redaguoti</a></td>
-                            <td><a href="workers/delete/{{$worker['id']}}" class="btn btn-info">Panaikinti</a></td>
+                            <td><a href="workers/update/{{$worker['id']}}" class="btn btn-warning">Redaguoti</a></td>
+                            <td><a href="workers/delete/{{$worker['id']}}" class="btn btn-danger">Panaikinti</a></td>
                         @endif
                     @endauth
                 </tr>
@@ -40,9 +40,4 @@
 @endsection
 
 @section('scripts')
-    <script>
-    $(document).ready( function () {
-        $('#table_id').DataTable();
-    } );
-    </script>
 @endsection

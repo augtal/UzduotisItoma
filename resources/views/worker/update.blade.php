@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     Update worker
-
+    
     <form action="/workers/update/{{$worker['id']}}/completed" method="POST">
         @csrf
         <div>
@@ -41,7 +41,8 @@
         </div>
         <br>
         
-        <button type="submit" class="btn btn-success">Uzsaugoti</button>
+        <button type="submit" class="btn btn-success">Užsaugoti</button>
+        <a href="/workers" class="btn btn-secondary">Atšaukti</a>
     </form>
 </div>
 @endsection
