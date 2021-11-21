@@ -19,7 +19,7 @@ class CompaniesController extends Controller
      * @return view company list view
      */
     public function index(){
-        $companies = Company::all()->toArray();
+        $companies = Company::paginate(10);
 
         return view('company.show')->with('companies', $companies);
     }
@@ -91,10 +91,11 @@ class CompaniesController extends Controller
      */
     public function deleteCompany($id){
         $count = Company::find($id)->getWorkers->count();
+        $message = null;
 
         if($count == 0){
-            // $this->deleteLogo($id);
-            // Company::destroy($id);
+            $this->deleteLogo($id);
+            Company::destroy($id);
         }
         else
             $message = 'Company has ' . $count . ' worker(s)';

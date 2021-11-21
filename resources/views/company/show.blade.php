@@ -40,6 +40,9 @@
             @endforeach
         </tbody>
     </table>
+    <div>
+        {{ $companies->links("pagination::bootstrap-4") }}
+    </div>
 </div>
 @endsection
 

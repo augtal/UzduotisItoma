@@ -15,7 +15,7 @@ class WorkersController extends Controller
      * @return view worker list view
      */
     public function index(){
-        $workers = Worker::all()->toArray();
+        $workers = Worker::paginate(10);
         $companies = Company::all()->toArray();
 
         return view('worker.show')->with('workers', $workers)->with('companies',$companies);
