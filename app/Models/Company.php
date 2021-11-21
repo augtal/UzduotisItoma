@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    public function getWorkers(){
+        return $this->hasMany(Worker::class, 'company', 'id');
+    }
+
     use HasFactory;
 }

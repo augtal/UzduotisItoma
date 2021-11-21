@@ -86,10 +86,16 @@ class CompaniesController extends Controller
      * @return view companies list view
      */
     public function deleteCompany($id){
-        $this->deleteLogo($id);
-        Company::destroy($id);
+        $count = Company::find($id)->getWorkers->count();
 
-        return redirect()->route('Companies');
+        if($count == 0){
+            // $this->deleteLogo($id);
+            // Company::destroy($id);
+        }
+        else
+            $message = 'Company has ' . $count . ' worker(s)';
+
+        return redirect()->route('Companies')->with('message', $message);
     }
 
     /**

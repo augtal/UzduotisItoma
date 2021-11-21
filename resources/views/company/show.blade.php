@@ -4,6 +4,10 @@
 <div class="container">
     Show workers!
 
+    @isset($message)
+        <h4 style="color: red"> {{$message}} </h4>
+    @endisset
+
     @auth
         @if (auth()->user()->isAdmin())
             <a href="companies/create" class="btn btn-secondary">Sukurti nauja</a>
