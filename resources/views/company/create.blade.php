@@ -13,28 +13,28 @@
         @csrf
         <div>
             <label for="name">Pavadinimas</label>
-            <input type="text" id="name" name="name" value="{{ old('name')}}" required>
+            <input type="text" id="name" name="name" value="{{ old('name')}}">
             <br>
             <span style="color: red">@error('name'){{$message}}@enderror</span>
         </div>
         <br>
         <div>
             <label for="email">El. Pastas</label>
-            <input type="email" id="email" name="email" value="{{ old('email')}}" required>
+            <input type="email" id="email" name="email" value="{{ old('email')}}">
             <br>
             <span style="color: red">@error('email'){{$message}}@enderror</span>
         </div>
         <br>
         <div>
             <label for="url">Interneto svetaine</label>
-            <input type="url" name="url" id="url" placeholder="https://example.com" size="30" value="{{ old('url')}}" required>
+            <input type="url" name="url" id="url" placeholder="https://example.com" size="30" value="{{ old('url')}}">
             <br>
             <span style="color: red">@error('phone'){{$message}}@enderror</span>
         </div>
         <br>
         <div>
             <label for="logo">Logotipas</label>
-            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+            <input type="file" id="logo" name="logo" accept="image/png, image/jpeg">
         </div>
         <br>
         

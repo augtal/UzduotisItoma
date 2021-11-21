@@ -51,9 +51,9 @@ class CompaniesController extends Controller
      * @return view update company view
      */
     public function showUpdateCompanyPage($id){
-        $companies = Company::where('id', $id)->first();
+        $company = Company::where('id', $id)->first();
 
-        return view('company.update')->with('companies', $companies);
+        return view('company.update')->with('company', $company);
     }
 
     /**

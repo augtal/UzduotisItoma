@@ -13,21 +13,21 @@
         @csrf
         <div>
             <label for="name">Vardas</label>
-            <input type="text" id="name" name="name" value="{{ old('name')}}" required>
+            <input type="text" id="name" name="name" value="{{ old('name')}}">
             <br>
             <span style="color: red">@error('name'){{$message}}@enderror</span>
         </div>
         <br>
         <div>
             <label for="email">El. Pastas</label>
-            <input type="email" id="email" name="email" value="{{ old('email')}}" required>
+            <input type="email" id="email" name="email" value="{{ old('email')}}">
             <br>
             <span style="color: red">@error('email'){{$message}}@enderror</span>
         </div>
         <br>
         <div>
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" pattern="+3706[0-9]{8}" placeholder="+3706" value="{{ old('phone')}}" required>
+            <input type="tel" id="phone" name="phone" pattern="+3706[0-9]{8}" placeholder="+3706" value="{{ old('phone')}}">
             <br>
             <span style="color: red">@error('phone'){{$message}}@enderror</span>
         </div>

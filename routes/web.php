@@ -27,7 +27,7 @@ Route::middleware(['auth', 'user'])->group(function (){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
     Route::get('/workers', [App\Http\Controllers\WorkersController::class, 'index'])->name('Workers');
-    Route::get('/companies', [App\Http\Controllers\WorkersController::class, 'index'])->name('Companies');
+    Route::get('/companies', [App\Http\Controllers\CompaniesController::class, 'index'])->name('Companies');
 
 });
 
