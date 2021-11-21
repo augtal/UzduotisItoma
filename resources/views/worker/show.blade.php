@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    Show workers!
+    <h3>Workers!</h3>
 
     @auth
         @if (auth()->user()->isAdmin())
@@ -10,7 +10,7 @@
         @endif
     @endauth
 
-    <table id="table_id" class="display">
+    <table id="table_id" class="table table-striped">
         <thead>
             <tr>
                 <th>Vardas</th>
@@ -25,7 +25,7 @@
                     <td>{{$worker['name']}}</td>
                     <td>{{$worker['email']}}</td>
                     <td>{{$worker['phone']}}</td>
-                    <td>{{$worker['company']}}</td>
+                    <td>{{$companies[$worker['company']-1]['name']}}</td>
                     @auth
                         @if (auth()->user()->isAdmin())
                             <td><a href="workers/update/{{$worker['id']}}" class="btn btn-warning">Redaguoti</a></td>

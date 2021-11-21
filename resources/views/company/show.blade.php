@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    Show workers!
+    <h3>Companies!</h3>
 
     @isset($message)
         <h4 style="color: red"> {{$message}} </h4>
@@ -14,13 +14,13 @@
         @endif
     @endauth
 
-    <table id="table_id" class="display">
+    <table id="table_id" class="table table-striped">
         <thead>
             <tr>
-                <th>Pavadinimas</th>
-                <th>El. Paštas</th>
-                <th>Interneto svetaine</th>
-                <th>Logotipas</th>
+                <th scope="col">Pavadinimas</th>
+                <th scope="col">El. Paštas</th>
+                <th scope="col">Interneto svetaine</th>
+                <th scope="col">Logotipas</th>
             </tr>
         </thead>
         <tbody>

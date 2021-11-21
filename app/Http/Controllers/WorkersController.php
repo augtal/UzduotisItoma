@@ -16,8 +16,9 @@ class WorkersController extends Controller
      */
     public function index(){
         $workers = Worker::all()->toArray();
+        $companies = Company::all()->toArray();
 
-        return view('worker.show')->with('workers', $workers);
+        return view('worker.show')->with('workers', $workers)->with('companies',$companies);
     }
 
     /**
