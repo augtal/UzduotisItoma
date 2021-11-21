@@ -9,7 +9,7 @@
             <li>{{ $error }}</li>
         @endforeach
     @endif --}}
-    <form action="/companies/create/completed" method="POST">
+    <form action="/companies/create/completed" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="name">Pavadinimas</label>

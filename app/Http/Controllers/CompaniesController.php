@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompaniesController extends Controller
 {
+    private $ImageDestinationPath = 'public/images/logo';
+
     /**
      * Shows all companies
      *
@@ -39,8 +42,9 @@ class CompaniesController extends Controller
 
         $data = $request->input();
 
+        $data['logo'] = $this->saveLogo($request);
         $this->saveCompany(new Company(), $data);
-
+        
         return redirect()->route('Companies');
     }
 
@@ -101,5 +105,20 @@ class CompaniesController extends Controller
         $company->save();
 
         return true;
+    }
+
+    private function saveLogo($request){
+        $data = $request->input();
+        $imageName = '';
+
+        if($request->hasFile('logo')){
+            $image = $request->file('logo');
+            $imageName = $data['name'].$image->getClientOriginalName();
+            $image->storeAs($this->ImageDestinationPath, $imageName);
+        }
+        else
+            $imageName = "noImage";
+
+        return $imageName;
     }
 }

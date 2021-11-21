@@ -27,7 +27,7 @@ class CompanyRequest extends FormRequest
             'name' => 'required | string',
             'email' => 'required | string | email',
             'url' => 'required | url',
-            'logo' => ''
+            'logo' => 'required'
         ];
     }
 }
