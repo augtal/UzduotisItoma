@@ -10,17 +10,23 @@
 
     @auth
         @if (auth()->user()->isAdmin())
-            <a href="companies/create" class="btn btn-secondary">Sukurti nauja</a>
+            <a href="companies/create" class="btn btn-secondary">@lang('messages.btn_company_new')</a>
         @endif
     @endauth
 
     <table id="table_id" class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Pavadinimas</th>
-                <th scope="col">El. Paštas</th>
-                <th scope="col">Interneto svetaine</th>
-                <th scope="col">Logotipas</th>
+                <th scope="col">@lang('messages.company_Name')</th>
+                <th scope="col">@lang('messages.company_Email')</th>
+                <th scope="col">@lang('messages.company_Website')</th>
+                <th scope="col">@lang('messages.company_Logo')</th>
+                @auth
+                    @if (auth()->user()->isAdmin())
+                        <th></th>
+                        <th></th>
+                    @endif
+                @endauth
             </tr>
         </thead>
         <tbody>
@@ -32,8 +38,8 @@
                     <td><img id="logo" src="{{ asset('storage/images/logo/'.$item['logo'])}}" alt="{{$item['logo']}}"></td>
                     @auth
                         @if (auth()->user()->isAdmin())
-                            <td><a href="companies/update/{{$item['id']}}" class="btn btn-warning">Redaguoti</a></td>
-                            <td><a href="companies/delete/{{$item['id']}}" class="btn btn-danger">Panaikinti</a></td>
+                            <td><a href="companies/update/{{$item['id']}}" class="btn btn-warning">@lang('messages.btn_update')</a></td>
+                            <td><a href="companies/delete/{{$item['id']}}" class="btn btn-danger">@lang('messages.btn_delete')</a></td>
                         @endif
                     @endauth
                 </tr>
