@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
+use App\Mail\NewCompany;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class CompaniesController extends Controller
@@ -44,6 +46,8 @@ class CompaniesController extends Controller
 
         $data['logo'] = $this->saveLogo($request);
         $this->saveCompany(new Company(), $data);
+
+        // Mail::to($data['email'])->send(new NewCompany($data['name']));
         
         return redirect()->route('Companies');
     }
