@@ -34,7 +34,7 @@ class CompaniesController extends Controller
     /**
      * Validates form inputs and saves company to database
      *
-     * @param CompanyRequest $request
+     * @param CompanyRequest $request Custom form request
      * @return view companies list view
      */
     public function createCompany(CompanyRequest $request){
@@ -63,7 +63,7 @@ class CompaniesController extends Controller
     /**
      * Validates form inputs and updates company information in database
      *
-     * @param CompanyRequest $request
+     * @param CompanyRequest $request Custom form request
      * @param int $id companies id in database
      * @return view companies list view
      */
@@ -72,6 +72,7 @@ class CompaniesController extends Controller
 
         $data = $request->input();
 
+        $data['logo'] = $this->updateLogo($request, $id);
         $company = Company::where('id', $id)->first();
         $this->saveCompany($company, $data);
 
@@ -85,6 +86,7 @@ class CompaniesController extends Controller
      * @return view companies list view
      */
     public function deleteCompany($id){
+        $this->deleteLogo($id);
         Company::destroy($id);
 
         return redirect()->route('Companies');
@@ -107,6 +109,12 @@ class CompaniesController extends Controller
         return true;
     }
 
+    /**
+     * Saves gives logo to website storage
+     *
+     * @param CompanyRequest $request Custom form request
+     * @return String returns saved image name
+     */
     private function saveLogo($request){
         $data = $request->input();
         $imageName = '';
@@ -118,6 +126,33 @@ class CompaniesController extends Controller
         }
         else
             $imageName = "noImage";
+
+        return $imageName;
+    }
+
+    /**
+     * Deletes companies logo based on companies ID in database
+     *
+     * @param int $id Companies id in database
+     * @return void
+     */
+    private function deleteLogo($id){
+        $company = Company::where('id', $id)->first();
+
+        $path = $this->ImageDestinationPath . '/' . $company->logo;
+        Storage::delete($path);
+    }
+
+    /**
+     * Updates companies logo
+     *
+     * @param CompanyRequest $request Custom form request
+     * @param int $id Companies id in database
+     * @return String returns saved image name
+     */
+    private function updateLogo($request, $id){
+        $this->deleteLogo($id);
+        $imageName = $this->saveLogo($request);
 
         return $imageName;
     }

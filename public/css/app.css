@@ -10019,3 +10019,12 @@ h3 {
     border-color: #dee2e6;
   }
 }
+img#logo {
+  width: 100px;
+  height: auto;
+}
+
+img#logo-big {
+  width: 250px;
+  height: auto;
+}

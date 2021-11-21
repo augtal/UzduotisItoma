@@ -34,7 +34,7 @@
         <br>
         <div>
             <label for="logo">Logotipas</label>
-            <input type="file" id="logo" name="logo" accept="image/png, image/jpeg">
+            <input type="file" id="logo" name="logo" accept="image/png, image/jpeg" required>
         </div>
         <br>
         

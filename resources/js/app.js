@@ -6,6 +6,9 @@
 
 require('./bootstrap');
 
+var $  = require( 'jquery' );
+var dt = require( 'datatables.net' )();
+
 window.Vue = require('vue').default;
 
 /**

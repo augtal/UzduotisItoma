@@ -4,7 +4,7 @@
 <div class="container">
     Update company
     
-    <form action="/companies/update/{{$company['id']}}/completed" method="POST">
+    <form action="/companies/update/{{$company['id']}}/completed" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="name">Vardas</label>
@@ -27,6 +27,9 @@
             <span style="color: red">@error('phone'){{$message}}@enderror</span>
         </div>
         <br>
+        @if (isset($company['logo']))
+            <img id="logo-big" src="{{ asset('storage/images/logo/'.$company['logo'])}}" alt="{{$company['logo']}}">
+        @endif
         <div>
             <label for="logo">Logotipas</label>
             <input type="file" id="logo" name="logo" accept="image/png, image/jpeg">

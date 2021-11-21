@@ -25,7 +25,7 @@
                     <td>{{$item['name']}}</td>
                     <td>{{$item['email']}}</td>
                     <td>{{$item['url']}}</td>
-                    <td>{{$item['logo']}}</td>
+                    <td><img id="logo" src="{{ asset('storage/images/logo/'.$item['logo'])}}" alt="{{$item['logo']}}"></td>
                     @auth
                         @if (auth()->user()->isAdmin())
                             <td><a href="companies/update/{{$item['id']}}" class="btn btn-warning">Redaguoti</a></td>
