@@ -2,7 +2,11 @@
 
 @section('content')
 <div class="container">
+<<<<<<< HEAD
     <h3>@lang('messages.workers')!</h3>
+=======
+    <h3>@lang('messages.workers')</h3>
+>>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
 
     @auth
         @if (auth()->user()->isAdmin())
@@ -13,10 +17,17 @@
     <table id="table_id" class="table table-striped">
         <thead>
             <tr>
+<<<<<<< HEAD
                 <th scope="col">@lang('messages.worker_Name')</th>
                 <th scope="col">@lang('messages.worker_Email')</th>
                 <th scope="col">@lang('messages.worker_Phone')</th>
                 <th scope="col">@lang('messages.worker_Company')</th>
+=======
+                <th>@lang('messages.worker_Name')</th>
+                <th>@lang('messages.worker_Email')</th>
+                <th>@lang('messages.worker_Phone')</th>
+                <th>@lang('messages.worker_Company')</th>
+>>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
                 @auth
                     @if (auth()->user()->isAdmin())
                         <th></th>
