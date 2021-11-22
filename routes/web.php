@@ -16,15 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes([
     'register' => false,
+    'reset' => false,
 ]);
 
 
 Route::middleware(['auth', 'user'])->group(function (){
-    Route::get('/', function () {
-        return view('welcome');
+    Route::get('/', function (){
+        return redirect()->route('home');
     });
-    
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::get('/workers', [App\Http\Controllers\WorkersController::class, 'index'])->name('Workers');
     Route::get('/companies', [App\Http\Controllers\CompaniesController::class, 'index'])->name('Companies');

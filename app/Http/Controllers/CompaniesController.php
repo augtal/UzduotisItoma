@@ -132,7 +132,7 @@ class CompaniesController extends Controller
 
         if($request->hasFile('logo')){
             $image = $request->file('logo');
-            $imageName = $data['name'].$image->getClientOriginalName();
+            $imageName = $data['name'] . $image->getClientOriginalName();
             $image->storeAs($this->ImageDestinationPath, $imageName);
         }
         else
@@ -162,8 +162,21 @@ class CompaniesController extends Controller
      * @return String returns saved image name
      */
     private function updateLogo($request, $id){
-        $this->deleteLogo($id);
-        $imageName = $this->saveLogo($request);
+        if($request->hasFile('logo')){
+            $this->deleteLogo($id);
+            $imageName = $this->saveLogo($request);
+        }
+        else{
+            #if no new logo was uploaded
+            $company = Company::where('id', $id)->first();
+            $logoName = explode('.', $company['logo']);
+            $data = $request->input();
+            $imageName = $data['name'] . $logoName[count($logoName)-1];
+
+            $path = $this->ImageDestinationPath . '/' . $company->logo;
+            $pathNew = $this->ImageDestinationPath . '/' . $imageName;
+            Storage::move($path, $pathNew);
+        }
 
         return $imageName;
     }
