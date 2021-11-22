@@ -8,7 +8,7 @@
                 <div class="card-header">@lang('menu.login')</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login', app()->getLocale()) }}">
                         @csrf
 
                         <div class="form-group row">
