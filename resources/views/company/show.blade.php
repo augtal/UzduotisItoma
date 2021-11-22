@@ -22,11 +22,11 @@
                 <th scope="col">@lang('messages.company_Website')</th>
                 <th scope="col">@lang('messages.company_Logo')</th>
                 @auth
-                @if (auth()->user()->isAdmin())
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                @endif
-            @endauth
+                    @if (auth()->user()->isAdmin())
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    @endif
+                @endauth
             </tr>
         </thead>
         <tbody>
