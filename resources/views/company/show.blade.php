@@ -10,11 +10,7 @@
 
     @auth
         @if (auth()->user()->isAdmin())
-<<<<<<< HEAD
             <a href="companies/create" class="btn btn-secondary">@lang('messages.company_new')</a>
-=======
-            <a href="companies/create" class="btn btn-secondary">@lang('messages.btn_company_new')</a>
->>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
         @endif
     @endauth
 
@@ -26,19 +22,11 @@
                 <th scope="col">@lang('messages.company_Website')</th>
                 <th scope="col">@lang('messages.company_Logo')</th>
                 @auth
-<<<<<<< HEAD
                 @if (auth()->user()->isAdmin())
                     <th scope="col"></th>
                     <th scope="col"></th>
                 @endif
             @endauth
-=======
-                    @if (auth()->user()->isAdmin())
-                        <th></th>
-                        <th></th>
-                    @endif
-                @endauth
->>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
             </tr>
         </thead>
         <tbody>

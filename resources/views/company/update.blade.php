@@ -2,11 +2,7 @@
 
 @section('content')
 <div class="container">
-<<<<<<< HEAD
     @lang('messages.company_update')
-=======
-    @lang('messages.company_new')
->>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
     
     <form action="/companies/update/{{$company['id']}}/completed" method="POST" enctype="multipart/form-data">
         @csrf

@@ -33,13 +33,8 @@
                 @else
                 <div class="collapse navbar-collapse">
                     <div class="navbar-nav">
-<<<<<<< HEAD
                         <a class="nav-item nav-link" href="{{ url('/workers') }}"> @lang('messages.workers') </a>
                         <a class="nav-item nav-link" href="{{ url('/companies') }}"> @lang('messages.companies') </a>
-=======
-                        <a class="nav-item nav-link" href="{{ route('Workers', app()->getLocale()) }}"> @lang('messages.workers') </a>
-                        <a class="nav-item nav-link" href="{{ route('Companies', app()->getLocale()) }}"> @lang('messages.companies') </a>
->>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
                     </div>
                 </div>
                 @endguest
@@ -54,7 +49,6 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
-<<<<<<< HEAD
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @lang('menu.language_select')
                             </a>
@@ -62,15 +56,6 @@
                             @foreach (Config::get('languages') as $lang => $language)
                                 <a class="dropdown-item" href="{{ route('LanguageSwitch', $lang) }}"> @lang('menu.'.$lang)</a>
                             @endforeach
-=======
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @lang('messages.language_select')
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route(Route::currentRouteName(), 'en') }}">@lang('messages.en')</a>
-                                <a class="dropdown-item" href="{{ route(Route::currentRouteName(), 'lt') }}">@lang('messages.lt')</a>
->>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
                             </div>
                         </li>
                     </ul>
@@ -81,21 +66,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-<<<<<<< HEAD
                                     <a class="nav-link" href="{{ route('login') }}">@lang('menu.login')</a>
-=======
-                                    <a class="nav-link" href="{{ route('login') }}">@lang('login.login')</a>
->>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-<<<<<<< HEAD
                                     <a class="nav-link" href="{{ route('register') }}">@lang('menu.register')</a>
-=======
-                                    <a class="nav-link" href="{{ route('register') }}">@lang('login.register')</a>
->>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
                                 </li>
                             @endif
                         @else
@@ -108,11 +85,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-<<<<<<< HEAD
                                         @lang('menu.logout')
-=======
-                                        @lang('messages.logout')
->>>>>>> e0ddb2d0d9d4abbc2b3a4d203c6336ae4ac12567
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
