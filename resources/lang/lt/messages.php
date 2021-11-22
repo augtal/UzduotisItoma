@@ -2,7 +2,7 @@
 
 
 return [
-    'btn_update' => 'Atnaujinti darbuotoją',
+    'btn_update' => 'Atnaujinti',
     'btn_delete' => 'Pašalinti',
     'btn_save' => 'Išsaugoti',
     'btn_cancel' => 'Atšaukti',
