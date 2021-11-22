@@ -33,8 +33,8 @@
                 @else
                 <div class="collapse navbar-collapse">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="{{ url('/workers') }}"> Workers </a>
-                        <a class="nav-item nav-link" href="{{ url('/companies') }}"> Companies </a>
+                        <a class="nav-item nav-link" href="{{ url('/workers') }}"> @lang('messages.workers') </a>
+                        <a class="nav-item nav-link" href="{{ url('/companies') }}"> @lang('messages.companies') </a>
                     </div>
                 </div>
                 @endguest
@@ -48,12 +48,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            lang1
-                        </li>
-                        |
-                        <li class="nav-item">
-                            lang2
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @lang('menu.language_select')
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (Config::get('languages') as $lang => $language)
+                                <a class="dropdown-item" href="{{ route('LanguageSwitch', $lang) }}"> @lang('menu.'.$lang)</a>
+                            @endforeach
+                            </div>
                         </li>
                     </ul>
 
@@ -63,13 +66,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">@lang('menu.login')</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">@lang('menu.register')</a>
                                 </li>
                             @endif
                         @else
@@ -82,7 +85,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        @lang('menu.logout')
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

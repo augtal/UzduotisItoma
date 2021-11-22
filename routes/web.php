@@ -19,6 +19,7 @@ Auth::routes([
     'reset' => false,
 ]);
 
+Route::get('language/{lang}', [App\Http\Controllers\LanguageController::class, 'changeLanguage'])->name('LanguageSwitch');
 
 Route::middleware(['auth', 'user'])->group(function (){
     Route::get('/', function (){
